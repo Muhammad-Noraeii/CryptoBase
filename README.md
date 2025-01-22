@@ -77,8 +77,13 @@ CryptoBase/
 ├── popup.html         # HTML file that contains structure and styling
 ├── popup.js           # JavaScript file with the logic for encoding/decoding
 ├── popup.css          # Internal CSS for styling the extension popup
+├── icons/             # Folder containing the icon images
+│   ├── icon16.png     # 16x16 pixel icon
+│   ├── icon48.png     # 48x48 pixel icon
+│   └── icon128.png    # 128x128 pixel icon
 ├── manifest.json      # Manifest file required for Chrome extensions
 └── README.md          # Documentation file (this one!)
+
 ```
 
 ---
