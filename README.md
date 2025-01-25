@@ -103,11 +103,7 @@ The `popup.js` file contains the JavaScript code responsible for the functionali
 - The `decodeBase64()` function decodes a Base64 string to its original form using `atob()`.
 
 Event listeners are attached to the buttons so that when a user clicks "Encode" or "Decode", the respective function is called.
-
-#### **popup.css**
-The `popup.css` file defines the styles for the extension's popup. It ensures the interface is clean, responsive, and visually appealing:
-- Uses flexbox for layout management.
-- Contains styling for buttons, textareas, and other UI elements.
+yling for buttons, textareas, and other UI elements.
 
 #### **manifest.json**
 The `manifest.json` file is a required configuration for any Chrome extension. It contains metadata about the extension, including:
