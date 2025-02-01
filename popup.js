@@ -1,59 +1,52 @@
-// Ensure elements are loaded before attaching event listeners
-document.addEventListener('DOMContentLoaded', function() {
-  const encodeButton = document.getElementById('encodeBtn');
-  const decodeButton = document.getElementById('decodeBtn');
-  const inputText = document.getElementById('inputText');
-  const resultText = document.getElementById('resultText');
-  const body = document.querySelector('body');
-  const toggleButton = document.getElementById('toggleDarkMode');
-  const icon = toggleButton.querySelector('i'); // Get the icon element
-  const copyButton = document.getElementById('copyBtn'); // Copy button
+document.addEventListener('DOMContentLoaded', () => {
+  const elements = {
+    encodeButton: document.getElementById('encodeBtn'),
+    decodeButton: document.getElementById('decodeBtn'),
+    inputText: document.getElementById('inputText'),
+    resultText: document.getElementById('resultText'),
+    body: document.body,
+    toggleButton: document.getElementById('toggleDarkMode'),
+    copyButton: document.getElementById('copyBtn')
+  };
 
-  function encodeBase64() {
-    const text = inputText.value;
-    if (text) {
-      resultText.value = btoa(text);
-    } else {
-      resultText.value = 'Please enter text to encode.';
-    }
-  }
+  const icon = elements.toggleButton.querySelector('i');
 
-  function decodeBase64() {
-    const text = inputText.value;
+  const updateResultText = (message) => {
+    elements.resultText.value = message;
+  };
+
+  const encodeBase64 = () => {
+    const text = elements.inputText.value.trim();
+    updateResultText(text ? btoa(text) : 'Please enter text to encode.');
+  };
+
+  const decodeBase64 = () => {
+    const text = elements.inputText.value.trim();
     if (text) {
       try {
-        resultText.value = atob(text);
-      } catch (e) {
-        resultText.value = 'Invalid Base64 string';
+        updateResultText(atob(text));
+      } catch {
+        updateResultText('Invalid Base64 string');
       }
     } else {
-      resultText.value = 'Please enter text to decode.';
+      updateResultText('Please enter text to decode.');
     }
-  }
+  };
 
-  // Function to toggle dark mode
-  function toggleDarkMode() {
-    body.classList.toggle('dark-mode');
-    // Change icon based on dark mode status
-    if (body.classList.contains('dark-mode')) {
-      icon.classList.remove('fa-sun');
-      icon.classList.add('fa-moon'); 
-    } else {
-      icon.classList.remove('fa-moon');
-      icon.classList.add('fa-sun'); 
-    }
-  }
+  const toggleDarkMode = () => {
+    elements.body.classList.toggle('dark-mode');
+    icon.classList.toggle('fa-sun');
+    icon.classList.toggle('fa-moon');
+  };
 
-
-  function copyResult() {
-    resultText.select(); 
-    document.execCommand('copy'); 
+  const copyResult = () => {
+    elements.resultText.select();
+    document.execCommand('copy');
     alert('Result copied to clipboard!');
-  }
+  };
 
-  // Add event listeners with named functions
-  encodeButton.addEventListener('click', encodeBase64);
-  decodeButton.addEventListener('click', decodeBase64);
-  toggleButton.addEventListener('click', toggleDarkMode); // Attach event listener to toggle button
-  copyButton.addEventListener('click', copyResult); // Attach event listener to copy button
+  elements.encodeButton.addEventListener('click', encodeBase64);
+  elements.decodeButton.addEventListener('click', decodeBase64);
+  elements.toggleButton.addEventListener('click', toggleDarkMode);
+  elements.copyButton.addEventListener('click', copyResult);
 });
