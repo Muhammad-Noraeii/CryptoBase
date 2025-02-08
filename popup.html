@@ -23,10 +23,16 @@
     <div class="input-group">
       <textarea id="inputText" placeholder="Enter text here" rows="4"></textarea>
     </div>
+
+    <div class="input-group">
+      <input type="password" id="password" placeholder="Enter password">
+    </div>
     
     <div class="buttons">
       <button id="encodeBtn">Encode</button>
       <button id="decodeBtn">Decode</button>
+      <button id="encryptBtn">Encrypt</button>
+      <button id="decryptBtn">Decrypt</button>
     </div>
     
     <div class="result-group">
@@ -40,5 +46,6 @@
   </div>
 
   <script src="popup.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </body>
 </html>
